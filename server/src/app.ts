@@ -3,6 +3,8 @@ import path from "path";
 
 import { ApiRouter } from "./routes";
 import { connectToMongoDB } from "./utils/connectToMongo";
+import morganMiddleware from "./utils/morganMiddleware";
+import Log from "./utils/logger";
 
 class App {
     public app: Application = express();
@@ -23,7 +25,7 @@ class App {
 		this.app.use(express.json());
 		this.app.use(express.urlencoded({ extended: false }));
 
-		// this.app.use(morganMiddleware);
+		this.app.use(morganMiddleware);
 		
 		this.app.use('/api/v1', this.apiRouter.router);
 
@@ -42,15 +44,15 @@ class App {
 
             const connClient = await connectToMongoDB(mongoUri);
 
-            console.log(`Servidor conectado a MongoDB Atlas, host: ${connClient.connection.host}`)
+            Log.info(`Servidor conectado a MongoDB Atlas, host: ${connClient.connection.host}`)
 
         } catch (error: any) {
-            console.log(`Error configurando MongoDB Atlas: ${error.message}`);
+            Log.error(`Error configurando MongoDB Atlas: ${error.message}`);
         }
     }
 
-    public listen(port: string | number, callback?: () => void): void {
-        this.app.listen(port, callback);
+    public listen(port: string | number, successMsg: string): void {
+        this.app.listen(port, () => Log.info(successMsg));
     }
 }
 
