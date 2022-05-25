@@ -1,0 +1,20 @@
+{
+  "name": "irradiancia-solar-app",
+  "version": "1.0.0",
+  "description": "Aplicacion web para conocimiento de gasto en energía y paneles solares",
+  "main": "server/index.ts",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "npm start --prefix client",
+    "server": "npm run start --prefix server",
+    "dev": "concurrently \"npm run dev-server\" \"npm run client\"",
+    "dev-server": "npm run dev --prefix server",
+    "install": "npm install --prefix client && npm install --prefix server",
+    "build": "npm run build-react --prefix client",
+    "build-react": "npm install && npm run build",
+    "build-tsc": "tsc",
+    "watch-tsc": "tsc -w"
+  },
+  "author": "Fernando Mendoza",
+  "license": "MIT"
+}
