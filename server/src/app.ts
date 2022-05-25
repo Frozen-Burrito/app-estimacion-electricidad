@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from "express";
 import path from "path";
 
 import { ApiRouter } from "./routes";
+import { connectToMongoDB } from "./utils/connectToMongo";
 
 class App {
     public app: Application = express();
@@ -10,6 +11,7 @@ class App {
     
     constructor() {
         this.init();
+        this.setupDataSource();
     }
 
     private init(): void {
@@ -31,6 +33,19 @@ class App {
             this.app.get("*", (req: Request, res: Response): void => {
                 res.sendFile(path.resolve(__dirname, "../../client/build/index.html"));
             });
+        }
+    }
+
+    private async setupDataSource(): Promise<void> {
+        try {
+            const mongoUri = process.env.MONGO_URI || "";
+
+            const connClient = await connectToMongoDB(mongoUri);
+
+            console.log(`Servidor conectado a MongoDB Atlas, host: ${connClient.connection.host}`)
+
+        } catch (error: any) {
+            console.log(`Error configurando MongoDB Atlas: ${error.message}`);
         }
     }
 
