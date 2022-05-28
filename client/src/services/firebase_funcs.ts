@@ -1,3 +1,4 @@
+import React from "react";
 import { 
     getAuth, 
     GoogleAuthProvider,
@@ -7,12 +8,21 @@ import {
     User, 
     updateProfile, 
 } from "firebase/auth";
-import React from "react";
+import { axiosClient } from "../api/axios_client";
 import { Action, ActionType } from "./action_types";
 import { UserCredentials } from "./root_reducer";
+import { IUser } from "../../..";
 
-export const signUpWithEmail = async (dispatcher: React.Dispatch<Action>, credentials: UserCredentials): Promise<User | null> => {
+export const signUpWithEmail = async (dispatch: React.Dispatch<Action>, credentials: UserCredentials): Promise<User | null> => {
     try {
+        const authAction: Action = {
+            type: ActionType.SIGN_IN_EMAIL,
+            data: undefined,
+            error: undefined
+        };
+
+        dispatch(authAction);
+
         const auth = getAuth();
         const userCredential = await createUserWithEmailAndPassword(
             auth, 
@@ -27,6 +37,19 @@ export const signUpWithEmail = async (dispatcher: React.Dispatch<Action>, creden
             await updateProfile(auth.currentUser, {
                 displayName: `${credentials.firstName} ${credentials.lastName}`
             });
+
+            const creationTime = user.metadata.creationTime !== undefined ? user.metadata.creationTime : "no-date";
+
+            const userData: IUser = {
+                uid: user.uid,
+                email: user.email,
+                providerId: user.providerId,
+                creationTime
+            };
+
+            const result = await axiosClient.post("/usuarios/sign-up", userData);
+
+            console.log(result);
         }
 
         return user;
@@ -34,6 +57,14 @@ export const signUpWithEmail = async (dispatcher: React.Dispatch<Action>, creden
     } catch (error: any) {
         const errCode = error.code;
         const errMsg = error.message;
+
+        const errAction: Action = {
+            type: ActionType.ERROR,
+            data: undefined,
+            error: errCode
+        };
+
+        dispatch(errAction);
 
         console.log("Error de autenticacion, codigo = ", errCode, ": ", errMsg)
     }

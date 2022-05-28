@@ -1,5 +1,7 @@
 import { Router, Request, Response } from "express";
 
+import { signUpUser, getUserByUID } from "../controllers/users_controller";
+
 export class UsersRouter {
 
     public router: Router;
@@ -10,10 +12,7 @@ export class UsersRouter {
     }
 
     private mapRoutes(): void {
-        this.router.route('/').get(async (req: Request, res: Response): Promise<Response> => {
-            return res.status(200).send({
-                recurso: 'Usuarios',
-            });
-        });
+        this.router.route("/sign-up").post(signUpUser);
+        this.router.route("/:id").get(getUserByUID);
     }
 }

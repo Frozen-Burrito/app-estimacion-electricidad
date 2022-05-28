@@ -74,15 +74,8 @@ export default function SignupForm() {
     };
 
     const handleEmailAuth = async () => {
-        // e.preventDefault();
-        console.log("Intentando usar signUpWithEmail");
-
-        console.log(initialized, signUpWithEmail);
-
         if (initialized && signUpWithEmail != null) {
-            console.log("Creando cuenta...");
-            await signUpWithEmail(values.credentials);
-            console.log("Sesion iniciada...");
+            const user = await signUpWithEmail(values.credentials);
         }
     }
     
