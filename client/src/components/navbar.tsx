@@ -14,15 +14,13 @@ import {
     Avatar,
     Stack
 } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+
 import { AuthContext } from "../services/firebaseContext";
 import { AuthState } from "../services/root_reducer";
+import { INavRouteItem } from "../../..";
 
-interface NavRouteItem {
-    label: string;
-    path: string;
-}
-
-const pages: NavRouteItem[] = [
+const pages: INavRouteItem[] = [
     { label: "Sobre Nosotros", path: "/about_us" },
     { label: "Servicios", path: "/services" },
     { label: "Blog", path: "/blog" },
@@ -46,7 +44,7 @@ export default function NavBar() {
         setAnchorElUser(event.currentTarget);
     };
     
-    const handleNavItemSelected = (navItem: NavRouteItem) => {
+    const handleNavItemSelected = (navItem: INavRouteItem) => {
         setAnchorElNav(null);
 
         navigate(navItem.path);
@@ -146,7 +144,7 @@ export default function NavBar() {
                             onClick={handleOpenNavMenu}
                             color="inherit"
                         >
-                            {/* <MenuIcon /> */}
+                            <MenuIcon />
                         </IconButton>
                         <Menu
                             id="menu-appbar"

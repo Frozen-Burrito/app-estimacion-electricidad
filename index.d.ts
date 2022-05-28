@@ -11,3 +11,8 @@ export interface IUser {
 	providerId: string;
 	creationTime: string;
 }
+
+export interface INavRouteItem {
+    label: string;
+    path: string;
+}

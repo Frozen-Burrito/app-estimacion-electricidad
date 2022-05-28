@@ -11,7 +11,7 @@ import AuthPage from "./auth_page";
 const App = (): JSX.Element => {
 
   return (
-    <Layout>
+    <Layout showFooter={false}>
       <Router basepath="/app">
         <PublicRoute path="/login" component={<AuthPage type="sign-in"/>}/>
         <PublicRoute path="/signup" component={<AuthPage type="sign-up"/>}/>
