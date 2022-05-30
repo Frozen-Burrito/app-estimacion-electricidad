@@ -1,14 +1,15 @@
 import { Router, Request, Response } from "express";
-import { DevicesRouter } from "./devices";
 
 import { UsersRouter } from "./users";
-
+import { BlogRouter } from "./bog";
+import { DevicesRouter } from "./devices";
 export class ApiRouter {
 
     public router: Router;
 
     private usersRouter: UsersRouter = new UsersRouter();
     private devicesRouter: DevicesRouter = new DevicesRouter();
+    private blogRouter: BlogRouter = new BlogRouter();
 
     constructor() {
         this.router = Router();
@@ -31,5 +32,6 @@ export class ApiRouter {
 
         this.router.use('/usuarios', this.usersRouter.router);
         this.router.use('/dispositivos', this.devicesRouter.router);
+        this.router.use('/blog', this.blogRouter.router);
     }
 }

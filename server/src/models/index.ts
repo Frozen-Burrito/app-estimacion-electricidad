@@ -1,6 +1,8 @@
-import { model } from "mongoose";
-import { IUser } from "../../..";
+import { model, Document } from "mongoose";
+import { IUser, IBlogPost } from "../../..";
 
 import UserSchema from "./user";
+import BlogPostSchema from "./blog";
 
-export const UserModel = model<IUser>("User", UserSchema);
+export const UserModel = model<IUser & Document>("User", UserSchema);
+export const BlogPostModel = model<IBlogPost & Document>("blog-post", BlogPostSchema);

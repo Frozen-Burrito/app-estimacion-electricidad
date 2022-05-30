@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { Schema } from "mongoose";
 
 import { UserModel } from "../models";
 

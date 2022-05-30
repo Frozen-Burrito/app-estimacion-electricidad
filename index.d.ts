@@ -13,6 +13,16 @@ export interface IUser {
 	creationTime: string;
 }
 
+export interface IBlogPost {
+	_id: string;
+	title: string;
+	creationTime: string;
+	author: IUser;
+	imageUrl: string;
+	shortDescription: string;
+	mdContent: string;
+}
+
 export interface INavRouteItem {
     label: string;
     path: string;

@@ -1,7 +1,6 @@
-import mongoose, { Schema } from "mongoose";
-import { IUser } from "../../..";
+import { Schema } from "mongoose";
 
-const UserSchema = new Schema<IUser>({
+const UserSchema = new Schema({
     uid: {
         type: String,
         required: [ true, "The user's UID is required"],
