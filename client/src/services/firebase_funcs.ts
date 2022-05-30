@@ -34,8 +34,10 @@ export const signUpWithEmail = async (dispatch: React.Dispatch<Action>, credenti
         
         if (auth.currentUser != null) {
 
+            const userDisplayName = `${credentials.firstName} ${credentials.lastName}`;
+
             await updateProfile(auth.currentUser, {
-                displayName: `${credentials.firstName} ${credentials.lastName}`
+                displayName: userDisplayName
             });
 
             const creationTime = user.metadata.creationTime !== undefined ? user.metadata.creationTime : "no-date";
@@ -43,6 +45,7 @@ export const signUpWithEmail = async (dispatch: React.Dispatch<Action>, credenti
             const userData: IUser = {
                 uid: user.uid,
                 email: user.email,
+                displayName: userDisplayName,
                 providerId: user.providerId,
                 creationTime
             };

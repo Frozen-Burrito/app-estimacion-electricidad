@@ -1,5 +1,5 @@
 
-exports.onCreatePage = async ({ page, actions }: any) => {
+export const onCreatePage = async ({ page, actions }: any) => {
   const { createPage } = actions
   // page.matchPath is a special key that's used for matching pages
   // only on the client.
