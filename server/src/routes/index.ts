@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 
 import { UsersRouter } from "./users";
-import { BlogRouter } from "./bog";
+import { BlogRouter } from "./blog";
 import { DevicesRouter } from "./devices";
 export class ApiRouter {
 

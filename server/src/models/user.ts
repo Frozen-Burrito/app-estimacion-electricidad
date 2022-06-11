@@ -7,7 +7,15 @@ const UserSchema = new Schema({
         unique: true,
     },
 
+    displayName: {
+        type: String,
+    },
+
 	email: {
+        type: String
+    },
+
+    avatarUrl: {
         type: String
     },
     

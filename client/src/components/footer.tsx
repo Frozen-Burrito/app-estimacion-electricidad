@@ -3,7 +3,7 @@ import { navigate } from "gatsby";
 import { Grid, Container, Box, Stack, Typography, Divider, Button, Link, IconButton } from "@mui/material";
 import { Mail, Twitter, Instagram, Pinterest } from "@mui/icons-material";
 
-import { INavRouteItem } from "../../..";
+import { INavRouteItem } from "../";
 
 const pages: INavRouteItem[] = [
     { label: "Sobre Nosotros", path: "/about_us" },

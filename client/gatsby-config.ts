@@ -9,7 +9,9 @@ const gatsbyConfig: GatsbyConfig = {
     prefix: "/api",
     url: "http://localhost:5001",
   },
-  plugins: [],
+  plugins: [
+    // "gatsby-transformer-remark"
+  ],
 }
 
 export default gatsbyConfig;

@@ -10,12 +10,20 @@ const BlogPostSchema = new Schema({
         type: String,
     },
 
+    lastUpdated: {
+        type: String,
+    },
+
     author: {
         ref: "User",
         type: Schema.Types.ObjectId,
     },
 
     imageUrl: {
+        type: String,
+    },
+
+    shortDescription: {
         type: String,
     },
 

@@ -9,6 +9,7 @@ export interface IUser {
 	uid: string;
 	email: string | null;
 	displayName: string | null;
+	avatarUrl: string;
 	providerId: string;
 	creationTime: string;
 }
@@ -21,9 +22,4 @@ export interface IBlogPost {
 	imageUrl: string;
 	shortDescription: string;
 	mdContent: string;
-}
-
-export interface INavRouteItem {
-    label: string;
-    path: string;
 }

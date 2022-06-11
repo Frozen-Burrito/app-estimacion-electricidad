@@ -4,7 +4,7 @@ import { BlogPostModel } from "../models";
 
 export const getAllBlogPosts = async (req: Request, res: Response) => {
     try {        
-        const blogPosts = await BlogPostModel.find().populate("author", "email _id");
+        const blogPosts = await BlogPostModel.find().populate("author", "displayName avatarUrl _id");
 
         return res.status(200).json({
             data: blogPosts
@@ -51,10 +51,12 @@ export const publishBlogPost = async (req: Request, res: Response) => {
         const { title, author, imageUrl, shortDescription, mdContent } = req.body;
 
 	    const creationTime: string = new Date().toISOString();
+        const lastUpdated: string = creationTime;
 
         const newBlogPost = await BlogPostModel.create({ 
             title,
             creationTime,
+            lastUpdated,
             author,
             imageUrl,
             shortDescription,

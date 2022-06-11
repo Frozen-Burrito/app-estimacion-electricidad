@@ -4,11 +4,13 @@ import { UserModel } from "../models";
 
 export const signUpUser = async (req: Request, res: Response) => {
     try {
-        const { uid, email, providerId, creationTime } = req.body;
+        const { uid, displayName, email, avatarUrl, providerId, creationTime } = req.body;
         
         const newUser = await UserModel.create({ 
             uid,
+            displayName,
             email,
+            avatarUrl,
             providerId,
             creationTime
         });

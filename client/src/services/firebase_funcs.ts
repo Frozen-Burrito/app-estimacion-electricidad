@@ -40,12 +40,15 @@ export const signUpWithEmail = async (dispatch: React.Dispatch<Action>, credenti
                 displayName: userDisplayName
             });
 
-            const creationTime = user.metadata.creationTime !== undefined ? user.metadata.creationTime : "no-date";
+            const creationTime = user.metadata.creationTime !== undefined 
+                ? user.metadata.creationTime 
+                : "no-date";
 
             const userData: IUser = {
                 uid: user.uid,
                 email: user.email,
                 displayName: userDisplayName,
+                avatarUrl: user.photoURL ?? "",
                 providerId: user.providerId,
                 creationTime
             };

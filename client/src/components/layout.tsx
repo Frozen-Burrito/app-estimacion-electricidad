@@ -13,22 +13,31 @@ import Footer from "./footer";
 const defaultTheme = (isDark: boolean) => createTheme({
     palette: {
         mode: isDark ? 'dark' : 'light',
+        primary: {
+            main: "#eed102"
+        },
+        secondary: {
+            main: "#021eee"
+        }
     },
 });
 
 interface LayoutProps {
     showFooter?: boolean;
+    includeTopMargin?: boolean;
 }
 
 export default function Layout(props: React.PropsWithChildren<LayoutProps>) {
 
-    const { children, showFooter } = props;
+    const { children, showFooter, includeTopMargin } = props;
+
+    const contentMarginTop = includeTopMargin || includeTopMargin == null ? "108px" : "0px";
 
     return (
         <AuthProvider>
             <ThemeProvider theme={defaultTheme(false)}>
                 <NavBar />
-                <div style={{ marginTop: "108px", minHeight: "100vh" }}>
+                <div style={{ marginTop: contentMarginTop.toString(), minHeight: "100vh" }}>
                     { children }
                 </div>
                 { showFooter === undefined || showFooter ? <Footer /> : null }

@@ -1,0 +1,34 @@
+.blog-html-content {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+} 
+
+.blog-html-content > h1, 
+.blog-html-content > h2, 
+.blog-html-content > h3 {
+    margin: 0 0 1.2rem 0;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.167;
+    letter-spacing: 0em;
+    color: inherit;
+}
+
+.blog-html-content > h1 {
+    font-size: 2.4rem;
+}
+
+.blog-html-content > h2 {
+    font-size: 2rem;
+}
+
+.blog-html-content > h3 {
+    font-size: 1.6rem;
+}
+
+.blog-html-content > p {
+    margin: 0 0 0.8rem 0;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+}

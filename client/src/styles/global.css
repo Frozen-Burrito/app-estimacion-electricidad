@@ -3,3 +3,55 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+
+section {
+    width: 100%;
+}
+
+main.hero {
+    position: relative;
+    overflow: hidden;
+    max-width: 100vw;
+    min-height: 100vh;
+}
+
+main.hero > .video-fondo {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+main.hero > .video-fondo > #video-home {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+main.hero > .contenido-hero {
+    position: absolute;
+    top: 0;
+    left: 3.2rem;
+    max-width: 80%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-oscuro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.24);
+}
+
+span.resaltado-primario {
+    color: #EED102;
+}
