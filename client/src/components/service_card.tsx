@@ -8,7 +8,8 @@ import {
   ListItemText,
 	CardContent,
 	Typography,
-  Button
+  Button,
+	CardActions
 } from "@mui/material";
 import { Done, ShoppingBag } from "@mui/icons-material";
 import { IService } from "..";
@@ -20,8 +21,8 @@ type ServiceProps = {
 export default function ServiceCard({ service }: ServiceProps) {
 
   const renderFeatures = () => {
-    return service.features.map(feature =>
-      <ListItemButton>
+    return service.features.map((feature, index) =>
+      <ListItemButton key={index}>
         <ListItemIcon>
           <Done />
         </ListItemIcon>
@@ -31,7 +32,7 @@ export default function ServiceCard({ service }: ServiceProps) {
   }
 
 	return (
-		<Card sx={{ maxWidth: "345px" }}>
+		<Card sx={{ maxWidth: "345px", height: "650px" }}>
 			<CardMedia
 				component="img"
 				height="194"
@@ -43,18 +44,29 @@ export default function ServiceCard({ service }: ServiceProps) {
 					{service.name}
 				</Typography>
 
-				<Typography variant="body2" color="text.secondary">
+				<Typography 
+					variant="body2" 
+					color="text.secondary"
+					sx={{
+						display: '-webkit-box',
+						overflow: 'hidden',
+						WebkitBoxOrient: 'vertical',
+						WebkitLineClamp: 3
+					}}
+				>
 					{service.description}
 				</Typography>
 
 				<List disablePadding>
 					{ renderFeatures() }
 				</List>
-
+					
+			</CardContent>
+			<CardActions>
 				<Button variant="outlined" size="large" startIcon={<ShoppingBag />}>
 					${service.price} { service.discountPercent > 0 ? `-${service.discountPercent}%` : ""}
 				</Button>
-				</CardContent>
+			</CardActions>
 		</Card>
 	);
 }

@@ -1,26 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Container, Typography, Grid } from "@mui/material";
+
+import { axiosClient } from "../api/axios_client";
 
 import ServiceCard from "./service_card";
 import { IService } from "..";
 
 export default function FeaturedSection() {
 
-  const testService: IService = {
-    _id: "6294bda7188dcf9e429f1ed6", 
-    name: "Instalación de paneles solares", 
-    creationTime: "2022-05-30T12:50:47.917Z", 
-    imageUrl: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fsolartribune.com%2Fwp-content%2Fuploads%2F2011%2F06%2Fistockphoto_000007078510XSmall-polycrystalline-cell.jpg&f=1&nofb=1", 
-    description: "Un servicio completo de instalación de paneles solares en tu propia azotea por técnicos profesionales, seguro de calidad y monitoreo de rendimiento.", 
-    features: [
-      "Preparación de azotea",
-      "3 horas de instalación.",
-      "Garantía de 10 años",
-    ], 
-    price: 899.99, 
-    discountPercent: 5, 
-  }
+  const [featuredProducts, setFeaturedProducts] = useState<IService[]>([]);
+
+  useEffect(() => {
+    async function getFeaturedProducts(count: number) {
+
+      try {
+        const result = await axiosClient.get("/productos");
+
+        console.log(result);
+
+        const products: IService[] = result.data.data;
+
+        if (result.status === 200) {
+          setFeaturedProducts(products.slice(0, count));
+        }
+      } catch (error) {
+        console.log("Unable to fetch blog entries: ", error);
+      }
+    } 
+
+    getFeaturedProducts(3);
+    
+  }, []);
 
   return (
     <section id="destacados">
@@ -40,15 +51,11 @@ export default function FeaturedSection() {
         </Typography>
 
         <Grid container spacing={2} sx={{ my: 3 }}>
-          <Grid item xs={4}>
-            <ServiceCard service={testService}/>
-          </Grid>
-          <Grid item xs={4}>
-            <ServiceCard service={testService}/>
-          </Grid>
-          <Grid item xs={4}>
-            <ServiceCard service={testService}/>
-          </Grid>
+          { featuredProducts.map(product => (
+            <Grid item xs={4}>
+              <ServiceCard service={product} key={product._id}/>
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </section>
