@@ -3,6 +3,8 @@ import { Router, Request, Response } from "express";
 import { UsersRouter } from "./users";
 import { BlogRouter } from "./blog";
 import { DevicesRouter } from "./devices";
+import { ProductRouter } from "./products";
+
 export class ApiRouter {
 
     public router: Router;
@@ -10,6 +12,7 @@ export class ApiRouter {
     private usersRouter: UsersRouter = new UsersRouter();
     private devicesRouter: DevicesRouter = new DevicesRouter();
     private blogRouter: BlogRouter = new BlogRouter();
+    private productRouter: ProductRouter = new ProductRouter();
 
     constructor() {
         this.router = Router();
@@ -33,5 +36,6 @@ export class ApiRouter {
         this.router.use('/usuarios', this.usersRouter.router);
         this.router.use('/dispositivos', this.devicesRouter.router);
         this.router.use('/blog', this.blogRouter.router);
+        this.router.use('/productos', this.productRouter.router);
     }
 }

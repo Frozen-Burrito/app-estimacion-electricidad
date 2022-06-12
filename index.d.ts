@@ -23,3 +23,14 @@ export interface IBlogPost {
 	shortDescription: string;
 	mdContent: string;
 }
+
+export interface IProduct {
+	_id: string;
+	name: string;
+	creationTime: string | null;
+	imageUrl: string;
+	description: string;
+	features: string[];
+	price: number;
+	discountPercent: number;
+}
