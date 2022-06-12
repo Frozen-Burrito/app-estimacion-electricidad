@@ -7,6 +7,7 @@ import { PublicRoute } from "../../components/public_route";
 
 import Profile from "./profile";
 import AuthPage from "./auth_page";
+import WriteBlogPage from "./write";
 
 const App = (): JSX.Element => {
 
@@ -16,6 +17,7 @@ const App = (): JSX.Element => {
         <PublicRoute path="/login" component={<AuthPage type="sign-in"/>}/>
         <PublicRoute path="/signup" component={<AuthPage type="sign-up"/>}/>
         <ProtectedRoute path="/profile" component={ Profile } />
+        <ProtectedRoute path="/blog/write" component={ WriteBlogPage } />
       </Router>
     </Layout>
   );

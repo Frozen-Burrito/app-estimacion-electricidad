@@ -1,5 +1,6 @@
 import { Container, Typography } from "@mui/material";
 import React from "react";
+import ContactSection from "../components/contact_section";
 import Layout from "../components/layout";
 
 export default function Contact() {
@@ -36,6 +37,8 @@ export default function Contact() {
                     Entra en contacto con nuestros especialistas, que te ayudarán a planear y llevar a cabo tus objetivos de uso responsable de electricidad.
                 </Typography>
             </Container>
+
+            <ContactSection />
         </Layout>
     );
 }

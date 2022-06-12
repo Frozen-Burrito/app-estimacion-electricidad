@@ -1,5 +1,6 @@
 import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { esES, enUS } from "@mui/material/locale";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -10,17 +11,20 @@ import NavBar from "./navbar";
 import "../styles/global.css";
 import Footer from "./footer";
 
-const defaultTheme = (isDark: boolean) => createTheme({
-    palette: {
-        mode: isDark ? 'dark' : 'light',
-        primary: {
-            main: "#eed102"
+const defaultTheme = (isDark: boolean) => createTheme(
+    {
+        palette: {
+            mode: isDark ? 'dark' : 'light',
+            primary: {
+                main: "#eed102"
+            },
+            secondary: {
+                main: "#021eee"
+            }
         },
-        secondary: {
-            main: "#021eee"
-        }
     },
-});
+    enUS
+);
 
 interface LayoutProps {
     showFooter?: boolean;

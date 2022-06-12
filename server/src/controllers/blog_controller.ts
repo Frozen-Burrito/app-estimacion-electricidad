@@ -48,7 +48,7 @@ export const getPostById = async (req: Request, res: Response) => {
 
 export const publishBlogPost = async (req: Request, res: Response) => {
     try {
-        const { title, author, imageUrl, shortDescription, mdContent } = req.body;
+        const { title, authorId, imageUrl, shortDescription, mdContent } = req.body;
 
 	    const creationTime: string = new Date().toISOString();
         const lastUpdated: string = creationTime;
@@ -57,7 +57,7 @@ export const publishBlogPost = async (req: Request, res: Response) => {
             title,
             creationTime,
             lastUpdated,
-            author,
+            author: authorId,
             imageUrl,
             shortDescription,
             mdContent

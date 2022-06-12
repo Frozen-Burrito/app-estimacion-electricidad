@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 
-import { signUpUser, getUserByUID } from "../controllers/users_controller";
+import { signUpUser, getUserByID, getUserByFirebaseUID } from "../controllers/users_controller";
 
 export class UsersRouter {
 
@@ -13,6 +13,7 @@ export class UsersRouter {
 
     private mapRoutes(): void {
         this.router.route("/sign-up").post(signUpUser);
-        this.router.route("/:id").get(getUserByUID);
+        this.router.route("/:id").get(getUserByID);
+        this.router.route("/firebase/:uid").get(getUserByFirebaseUID);
     }
 }

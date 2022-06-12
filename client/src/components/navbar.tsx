@@ -18,7 +18,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import { AuthContext } from "../services/firebaseContext";
 import { AuthState } from "../services/root_reducer";
-import { INavRouteItem } from "../../..";
+import { INavRouteItem } from "../";
 
 const pages: INavRouteItem[] = [
     { label: "Sobre Nosotros", path: "/about_us" },
@@ -132,7 +132,13 @@ export default function NavBar() {
                         textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        Irradiancia 
+                        <img 
+                            src="../../icon.png" 
+                            style={{ width: "32px", height: "32px"}} 
+                            loading="lazy"
+                        />
+                        Solar
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -188,7 +194,13 @@ export default function NavBar() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        Irradiancia
+                        <img 
+                            src="../../images/logo.png" 
+                            style={{ width: "32px", height: "32px"}} 
+                            loading="lazy"
+                        />
+                        Solar
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (

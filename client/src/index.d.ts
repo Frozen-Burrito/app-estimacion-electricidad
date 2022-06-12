@@ -20,6 +20,19 @@ export interface IBlogResponse {
 	mdContent: string;
 }
 
+export interface INewBlogEntry {
+	authorId: string;
+	title: string;
+	shortDescription: string;
+	imageUrl: string;
+	mdContent: string;
+}
+
+export interface IBlogEntryCreated {
+	postId: string,
+	location: string
+}
+
 export interface IService {
 	_id: string;
 	name: string;
@@ -34,4 +47,14 @@ export interface IService {
 export interface INavRouteItem {
     label: string;
     path: string;
+}
+
+export interface IUserResponse {
+	_id: string,
+	uid: string,
+	displayName: string,
+	email: string,
+	avatarUrl: string,
+	providerId: string,
+	creationTime: string,
 }

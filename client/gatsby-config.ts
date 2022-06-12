@@ -10,7 +10,12 @@ const gatsbyConfig: GatsbyConfig = {
     url: "http://localhost:5001",
   },
   plugins: [
-    // "gatsby-transformer-remark"
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'src/assets/icon.png',
+      },
+    },
   ],
 }
 

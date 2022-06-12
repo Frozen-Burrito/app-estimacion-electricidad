@@ -82,7 +82,13 @@ export default function Footer() {
                                     textDecoration: 'none',
                                 }}
                             >
-                                LOGO&nbsp;
+                                Irradiancia 
+                                <img 
+                                    src="../../icon.png" 
+                                    style={{ width: "32px", height: "32px"}} 
+                                    loading="lazy"
+                                />
+                                Solar
                             </Typography>
                             
                             <Box>
